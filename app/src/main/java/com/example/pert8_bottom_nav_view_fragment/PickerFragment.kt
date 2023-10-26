@@ -26,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
 class PickerFragment : Fragment() {
 
     private lateinit var binding: FragmentPickerBinding
-    private lateinit var selectedItem: String
+    private var selectedItem : String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,9 +61,8 @@ class PickerFragment : Fragment() {
             btnBuyTicket.setOnClickListener {
                 findNavController().apply {
                     previousBackStackEntry?.
-                    savedStateHandle?.set("ticket", selectedItem)
+                    savedStateHandle?.set("ticket", (selectedItem)?: "Tiket")
                 }.navigateUp()
-
             }
         }
     }
